@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int bfs(TreeNode* root,int ans){
+        if(root==NULL)return ans;
+        ans++;
+        int left=bfs(root->left,ans);
+        int right=bfs(root->right,ans);
+        ans=max(left,right);
+        return ans;
+    }
+    int maxDepth(TreeNode* root) {
+        int ans=0;
+        if(root==NULL)return ans;
+        return bfs(root,ans);
+    }
+};
